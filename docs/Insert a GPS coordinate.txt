@@ -1,3 +1,5 @@
+Authentication is done by the header Authorization. In basic HTTP authentication, a request contains a header field in the form of Authorization: Basic <credentials>, where credentials is the base64 encoding of id and password joined by a single colon :.
+
 curl --location --request POST 'https://www.cc.puv.fi/~e1601124/ci_test/api/point' \
 --header 'Authorization: Basic dTE6cDE=' \
 --header 'Content-Type: multipart/form-data' \
