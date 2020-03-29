@@ -1,0 +1,15 @@
+curl --location --request POST 'localhost/ci_test/api/user' \
+--header 'Content-Type: multipart/form-data; boundary=--------------------------555321333164256052723557' \
+--form 'username=u4' \
+--form 'password=p4'
+
+Response:
+[
+	"User created successfully."
+]
+
+...or (when username is duplicated) :
+
+[
+	"Failed to create user. Please choose another username."
+]

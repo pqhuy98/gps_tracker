@@ -1,0 +1,10 @@
+curl --location --request POST 'https://www.cc.puv.fi/~e1601124/ci_test/api/point' \
+--header 'Authorization: Basic dTE6cDE=' \
+--header 'Content-Type: multipart/form-data' \
+--form 'longitude=3' \
+--form 'latitude=3'
+
+Response:
+[
+    "Point added successfully."
+]

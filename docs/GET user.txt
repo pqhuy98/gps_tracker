@@ -1,0 +1,14 @@
+curl --location --request GET 'www.cc.puv.fi/~e1601124/ci_test/api/user'
+
+Response:
+[
+    {
+        "username": "u1"
+    },
+    {
+        "username": "u2"
+    },
+    {
+        "username": "u3"
+    }
+]

@@ -1,0 +1,6 @@
+curl --location --request GET 'www.cc.puv.fi/~e1601124/ci_test/api/user/u1'
+
+Response:
+{
+    "username": "u1"
+}
