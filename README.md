@@ -35,7 +35,7 @@ Model-View-Controller architecture is employed in the whole project. This backen
 Model Diagram:  
 ![Model Diagram](https://raw.githubusercontent.com/pqhuy98/gps_tracker/master/model-diagram.PNG)
 
-The project contains two classes: User and Point.  
+The model component contains two classes: User and Point.  
 - Class User is a pair of (username, password) and is used for authentication and authorization in the REST API.  
 - Class Point contains the GPS coordinate, i.e. longitude and latitude, owner's username and timestamp.
 
@@ -46,7 +46,7 @@ Source code files to be concerned:
 ```
 
 ### Controller:
-The controller implements REST methods to create and retrieve User and Point. See section <b>REST API Documentation</b> below for detailed end points.
+The controller implements REST methods to create and retrieve User and Point. See section [REST API Documentation](https://github.com/pqhuy98/gps_tracker#rest-api-documentation) below for detailed end points.
 
 Source code files to be concerned:
 ```
