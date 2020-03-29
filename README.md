@@ -35,7 +35,7 @@ Model-View-Controller architecture is employed in the whole project. This backen
 Model Diagram:  
 ![Model Diagram](https://raw.githubusercontent.com/pqhuy98/gps_tracker/master/model-diagram.PNG)
 
-The project contains two classes: User and Point.  
+The model component contains two classes: User and Point.  
 - Class User is a pair of (username, password) and is used for authentication and authorization in the REST API.  
 - Class Point contains the GPS coordinate, i.e. longitude and latitude, owner's username and timestamp.
 
