@@ -33,9 +33,12 @@ class User extends REST_Controller {
         $data = $this->input->post();
 
         // Create user
-        $this->user_model->create($data);
-     
-        $this->response(['User created successfully.'], REST_Controller::HTTP_OK);
+        $ok = $this->user_model->create($data);
+        if ($ok) {
+            $this->response(['User created successfully.'], REST_Controller::HTTP_OK);
+        } else {
+            $this->response(['Failed to create user. Please choose another username.'], REST_Controller::HTTP_BAD_REQUEST);
+        }
     } 
 
     // // Controller method for "DELETE api/user/$username"

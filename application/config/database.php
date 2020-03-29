@@ -97,3 +97,7 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+if (getenv("DISABLE_ERROR_REPORTING") === "false") {
+	error_reporting(0);
+	$db['default']['db_debug'] = FALSE;
+}
