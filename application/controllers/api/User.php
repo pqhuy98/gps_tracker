@@ -39,7 +39,18 @@ class User extends REST_Controller {
         } else {
             $this->response(['Failed to create user. Please choose another username.'], REST_Controller::HTTP_BAD_REQUEST);
         }
-    } 
+    }
+
+    public function login_post() {
+        // Get the request's body.
+        $data = $this->input->post();
+        $ok = $this->user_model->validate_password($data["username"], $data["password"]);
+        if ($ok) {
+            $this->response(array("status" => "success"), REST_Controller::HTTP_OK);
+        } else {
+            $this->response(array("status" => "failed"), REST_Controller::HTTP_UNAUTHORIZED);
+        }
+    }
 
     // // Controller method for "DELETE api/user/$username"
     // // Delete a user given the username.
