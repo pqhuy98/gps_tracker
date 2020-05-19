@@ -12,7 +12,7 @@ The project's requirement written by our teacher Ghodrat Moghadampour:
 
 ## Installation  
 ### Build from source
-1. Install [Composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-macos) - a PHP dependency manager. Please install it globally so you can use the command `composer install` in step 3.
+1. Install [Composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-macos) - a PHP dependency manager. Please install it globally so you can use the command `composer install` in step 3, see instruction in the link.
 2. Clone project and put it in PHP's web folder `www` (or `public_html` for VAMK server).
 3. In the project folder, run command line `composer install`.
 4. Create a MySQL database. Create tables using this [database schema](https://github.com/pqhuy98/gps_tracker/blob/master/database-schema.sql).
