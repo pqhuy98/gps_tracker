@@ -12,11 +12,9 @@ The project's requirement written by our teacher Ghodrat Moghadampour:
 
 ## Installation  
 ### Build from source
-1. Install [Composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-macos) - a PHP dependency manager. Please install it globally so you can use the command `composer install` in step 3, see instruction in the link.
-2. Clone project and put it in PHP's web folder `www` (or `public_html` for VAMK server).
-3. In the project folder, run command line `composer install`.
-4. Create a MySQL database. Create tables using this [database schema](https://github.com/pqhuy98/gps_tracker/blob/master/database-schema.sql).
-5. Create an `.env` file inside the folder `[project_path]/application` with following content (you will need to change their values):
+1. Clone project and put it in PHP's web folder `www` (or `public_html` for VAMK server).
+2. Create a MySQL database. Create tables using this [database schema](https://github.com/pqhuy98/gps_tracker/blob/master/database-schema.sql).
+3. Create an `.env` file inside the folder `[project_path]/application` with following content (you will need to change their values):
 ```
 DB_HOST="your database host, e.g. mysql.cc.puv.fi"
 DB_USERNAME="your username, e.g. admin"
@@ -26,7 +24,7 @@ DB_DATABASE="your database name, e.g. gps_tracker"
 AUTHENTICATION=true   # whether the application performs password check or not (teacher's requirement).
 ERROR_REPORTING=false # if true, PHP's error message will thrown, else otherwise. Set it to false in production.
 ```
-6. Now the REST server should be functioning on `localhost/gps_tracker/api/...`. See Swagger documentation below for API specification.
+4. Now the REST server should be functioning on `localhost/gps_tracker/api/...`. See Swagger documentation below for API specification.
 
 ## Architecture
 Model-View-Controller architecture is employed in the whole project. This backend repository implements Model and Controller component, while the frontend Android client app implements the View component.
