@@ -24,8 +24,8 @@ PRIVATE_KEY="..."
 AUTHENTICATION=true   # whether the application performs password check or not (teacher's requirement).
 ERROR_REPORTING=false # if true, PHP's error message will thrown, else otherwise. Set it to false in production.
 ```
-4. The value of `PRIVATE_KEY` can be generated with the method described in [this section](https://github.com/pqhuy98/gps_tracker#private_key-generation).
-5. Now the REST server should be functioning on `localhost/gps_tracker/api/...`. See Swagger documentation below for API specification.
+4. The value of `PRIVATE_KEY` must be generated with the method described in [this section](https://github.com/pqhuy98/gps_tracker#private_key-generation).
+5. After having a valid PRIVATE_KEY, the REST server should be functioning on `localhost/gps_tracker/api/...`. See Swagger documentation below for API specification.
 
 ## Architecture
 Model-View-Controller architecture is employed in the whole project. This backend repository implements Model and Controller component, while the frontend Android client app implements the View component.
