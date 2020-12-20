@@ -87,7 +87,7 @@ Substring from position 16 to 60 : `the content of this file if you are not sure
 
 Now we concatenate the two substring to get the passphrase: `configuration file in which the content of this file if you are not sure`. We use this phase phrase to decrypt the PRIVATE_KEY's second part `f9816ad5c652c056f...` with the encryption algorithn to retrieve the database credentials `mysql.vamk.fi:e123456:password:database_name` (the host name, username, password and database name is concatenated by character `:`).
 
-Implementation of the scheme can be found in the source code: [link](https://github.com/pqhuy98/gps_tracker/blob/master/application/config/database.php#L79).
+Implementation of the scheme can be found in [this part of the source code](https://github.com/pqhuy98/gps_tracker/blob/master/application/config/database.php#L79).
 
 The encryption and decryption algorithm is a combination of AES-256 and HMAC which is originated from [here](https://stackoverflow.com/a/46872528).
 
