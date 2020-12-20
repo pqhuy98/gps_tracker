@@ -76,6 +76,14 @@ $query_builder = TRUE;
 $dotenv = Dotenv\Dotenv::createImmutable(APPPATH);
 $dotenv->load();
 
+var_dump(getDatabaseCredential());
+
+// --------------------------------------------------------------------------------------
+// Uncomment the line follows to generate the private key using database credentials.
+// Private key is stored in the file "./private_key.txt".
+// makePrivateKey("host", "username", "password", "db_name", a, b, c, d);
+// --------------------------------------------------------------------------------------
+
 $db['default'] = array(
     'dsn'   => '',
     'hostname' => getDatabaseCredential()[0],
@@ -103,23 +111,25 @@ if (getenv("ERROR_REPORTING") === "false") {
     $db['default']['db_debug'] = FALSE;
 }
 
-// Uncomment the line follows to generate the private key using database credentials.
-// var_dump(makePrivateKey("host name", "username", "password", "database name", "pass string"));
-
 // Secret obfuscation, encryption and decryption functions
-var_dump(getDatabaseCredential());
 function getDatabaseCredential() {
     $lines = getFirstLines(2);
+
     $key = getenv('PRIVATE_KEY');
-    $start = array((int)substr($key, 0, 2), (int)substr($key, 2, 2));
-    $end = array((int)substr($key, 4, 2), (int)substr($key, 6, 2));
+    var_dump($key);
+    $cipher = substr($key, 8);
 
-    $key = substr($key, 8);
-    var_dump(substr($lines[0], $start[0], $end[0] - $start[0]));
-    $pass = substr($lines[0], $start[0], $end[0] - $start[0]) . substr($lines[1], $start[1], $end[1] - $start[1]);
-    var_dump($pass);
+    $a = (int)substr($key, 0, 2);
+    $b = (int)substr($key, 2, 2);
+    $c = (int)substr($key, 4, 2);
+    $d = (int)substr($key, 6, 2);
+    $pass = getPassphrase($lines, $a, $b, $c, $d);
 
-    return explode(":", AES256_decrypt(hex2bin($key), $pass));
+    return explode(":", AES256_decrypt(hex2bin($cipher), $pass));
+}
+
+function getPassphrase($lines, $a, $b, $c, $d) {
+    return substr($lines[0], $a, $c - $a) . substr($lines[1], $b, $d - $b);
 }
 
 function getFirstLines($number) {
@@ -162,7 +172,14 @@ function AES256_decrypt($ivHashCiphertext, $password) {
 }
 
 // Function to make private key.
-function makePrivateKey($host, $username, $password, $database, $pass) {
+function makePrivateKey($host, $username, $password, $database, $a, $b, $c, $d) {
+    $lines = getFirstLines(2);
+    $pass = getPassphrase($lines, $a, $b, $c, $d);
+
     $plaintext = join(":", array($host, $username, $password, $database));
-    return bin2hex(AES256_encrypt($plaintext, $pass));
+    var_dump($plaintext);
+    var_dump($pass);
+    $pk = $a . $b . $c . $d . bin2hex(AES256_encrypt($plaintext, $pass));
+
+    file_put_contents("private_key.txt", $pk);
 }
