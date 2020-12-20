@@ -76,8 +76,6 @@ $query_builder = TRUE;
 $dotenv = Dotenv\Dotenv::createImmutable(APPPATH);
 $dotenv->load();
 
-var_dump(getDatabaseCredential());
-
 // --------------------------------------------------------------------------------------
 // Uncomment the line follows to generate the private key using database credentials.
 // Private key is stored in the file "./private_key.txt".
@@ -116,7 +114,6 @@ function getDatabaseCredential() {
     $lines = getFirstLines(2);
 
     $key = getenv('PRIVATE_KEY');
-    var_dump($key);
     $cipher = substr($key, 8);
 
     $a = (int)substr($key, 0, 2);
@@ -177,8 +174,6 @@ function makePrivateKey($host, $username, $password, $database, $a, $b, $c, $d) 
     $pass = getPassphrase($lines, $a, $b, $c, $d);
 
     $plaintext = join(":", array($host, $username, $password, $database));
-    var_dump($plaintext);
-    var_dump($pass);
     $pk = $a . $b . $c . $d . bin2hex(AES256_encrypt($plaintext, $pass));
 
     file_put_contents("private_key.txt", $pk);
