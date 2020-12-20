@@ -24,7 +24,7 @@ PRIVATE_KEY="..."
 AUTHENTICATION=true   # whether the application performs password check or not (teacher's requirement).
 ERROR_REPORTING=false # if true, PHP's error message will thrown, else otherwise. Set it to false in production.
 ```
-4. The value of `PRIVATE_KEY` can be generated with the method described in [this section](https://github.com/pqhuy98/gps_tracker/blob/master/README.md#database-credentials-retrieval).
+4. The value of `PRIVATE_KEY` can be generated with the method described in [this section](https://github.com/pqhuy98/gps_tracker#private_key-generation).
 5. Now the REST server should be functioning on `localhost/gps_tracker/api/...`. See Swagger documentation below for API specification.
 
 ## Architecture
@@ -91,7 +91,7 @@ Implementation of the scheme can be found in the source code: [link](https://git
 
 The encryption and decryption algorithm is a combination of AES-256 and HMAC which is originated from [here](https://stackoverflow.com/a/46872528).
 
-## Database Credential Generation
+## PRIVATE_KEY Generation
 To generate the PRIVATE_KEY string, the server admin must:
 1) Pick 4 integer numbers `a`, `b`, `c` and `d` from 10 to 99. For example: 14, 16, 42 and 60.
 2) Open [this file](https://github.com/pqhuy98/gps_tracker/blob/master/application/config/database.php#L82) in the server.
