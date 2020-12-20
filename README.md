@@ -95,7 +95,9 @@ The encryption and decryption algorithm is a combination of AES-256 and HMAC whi
 To generate the PRIVATE_KEY string, the server admin must:
 1) Pick 4 integer numbers `a`, `b`, `c` and `d` from 10 to 99. For example: 14, 16, 42 and 60.
 2) Open [this file](https://github.com/pqhuy98/gps_tracker/blob/master/application/config/database.php#L82) in the server.
-3) Navigate to line 82 and change the value of `host`, `username`, `password`, `db_name`, `a`, `b`, `c` and `d` to the corresponding values of his database server. Values of `a`, `b`, `c` and `d` are what the admin chose in step 1.
+3) Navigate to line 82, uncomment the line and change the value of `host`, `username`, `password`, `db_name`, `a`, `b`, `c` and `d` to the corresponding values of his database server. Values of `a`, `b`, `c` and `d` are what the admin chose in step 1.
 4) Use the web browser to visit `localhost/gps_tracker/api/user`. There might be some errors show up because server couldn't connect to database. This is expected since we haven't set a valid PRIVATE_KEY yet. Just ignore the errors.
 5) After the previous step, a file named `private_key.txt` will be created in the project's root directory in the server.
 6) Copy the content of `private_key.txt` and put it into the variable PRIVATE_KEY inside the .env file. I.e. `PRIVATE_KEY="content of private_key.txt goes here..."`
+7) Confirm that the server works by visiting `localhost/gps_tracker/api/user` to see if list of users is retrieved successfully.
+8) After confirming that the server works, comment out the line 82 in step 3 and delete the inputted value so no one can see it.
