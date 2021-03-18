@@ -43,7 +43,11 @@ sed -i -r '/^PRIVATE_KEY="[0-9a-f]+"$/d' $PATH_DOTENV
 privateKey=$(<$PATH_PRIVATE_KEY)
 configLine="PRIVATE_KEY=\"$privateKey\""
 echo $configLine >> $PATH_DOTENV
-# rm $PATH_PRIVATE_KEY
+rm $PATH_PRIVATE_KEY
 
 echo
 echo Credential has been successfully changed!
+echo Host $host
+echo Username $username
+echo Password $password
+echo Datbase $dbName

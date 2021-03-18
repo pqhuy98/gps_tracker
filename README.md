@@ -14,9 +14,10 @@ The project's requirement written by our teacher Ghodrat Moghadampour:
 Firstly, you will need to have a MySQL database for this application. Create tables using this [database schema](https://github.com/pqhuy98/gps_tracker/blob/master/database-schema.sql).
 
 ### Quick installation for VAMK's server
-This section is for deloying on VAMK's cc.puv.fi server. Copy and run these command lines on VAMK's shell and all are set. You will need to enter your MySQL host, username, password, and database name.
+This section is for deloying on VAMK's cc.puv.fi server. Copy and run these command lines on VAMK's shell and a fresh version of the server will be installed. You will need to enter your MySQL host, username, password, and database name.
 ```
 cd ~/public_html
+rm -rf gps_tracker
 git clone https://github.com/pqhuy98/gps_tracker
 cd gps_tracker
 
@@ -25,9 +26,11 @@ echo "# This is the configuration file in which initial settings are defined and
 
 AUTHENTICATION=true   # whether the application performs password check or not (teacher's requirement).
 ERROR_REPORTING=false # if true, PHP's error message will thrown, else otherwise. Set it to false in production.
-" > ./apllication/.env
-chmod u+x ./database-config.vamk.fi
-./database-config.vamk.fi
+" > ./application/.env
+
+
+chmod u+x ./database-config.vamk.sh
+./database-config.vamk.sh
 echo "Installation completed."
 ```
 
