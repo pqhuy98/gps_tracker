@@ -30,8 +30,7 @@ ERROR_REPORTING=false # if true, PHP's error message will thrown, else otherwise
 
 
 chmod u+x ./database-config.vamk.sh
-./database-config.vamk.sh
-echo "Installation completed."
+source ./database-config.vamk.sh && echo "Installation completed."
 ```
 
 ### Build from source

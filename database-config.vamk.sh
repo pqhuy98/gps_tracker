@@ -49,5 +49,4 @@ echo
 echo Credential has been successfully changed!
 echo Host $host
 echo Username $username
-echo Password $password
 echo Datbase $dbName
