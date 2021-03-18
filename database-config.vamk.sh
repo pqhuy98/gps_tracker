@@ -8,8 +8,7 @@ read -p 'Host [mysql.cc.puv.fi]: ' host
 host=${host:-mysql.cc.puv.fi}
 read -p 'Username [e1601124]: ' username
 username=${username:-e1601124}
-read -sp 'Password [12345]: ' password
-password=${password:-12345}
+read -sp 'Password: ' password
 echo
 read -p "Database name [$username""_gps_tracker]: " dbName
 dbName=${dbName:-"$username""_gps_tracker"}
@@ -22,7 +21,7 @@ c=$((35 + $RANDOM % ($endCap-$startCap))) # random int in range [$startCap, $end
 d=$((35 + $RANDOM % ($endCap-$startCap))) # random int in range [$startCap, $endCap)
 
 # clean up private key file
-rm $PATH_PRIVATE_KEY
+rm $PATH_PRIVATE_KEY 2> /dev/null
 touch $PATH_PRIVATE_KEY
 chmod 777 $PATH_PRIVATE_KEY
 
@@ -30,7 +29,10 @@ cmd="
 makePrivateKey(\"$host\", \"$username\", \"$password\", \"$dbName\", $a, $b, $c, $d);"
 echo $cmd >> $PATH_PHP_CONFIG # add this line to be run when API is called
 
-curl -s https://www.cc.puv.fi/~$username/gps_tracker/api/user > /dev/null
+# Make request to server to update
+curl -s http://localhost/~e1601124/gps_tracker/api/user > /dev/null
+curl -s https://www.cc.puv.fi/~e1601124/gps_tracker/api/user > /dev/null
+
 # delete the last 2 lines created earlier
 sed -i '$d' $PATH_PHP_CONFIG
 
@@ -41,7 +43,7 @@ sed -i -r '/^PRIVATE_KEY="[0-9a-f]+"$/d' $PATH_DOTENV
 privateKey=$(<$PATH_PRIVATE_KEY)
 configLine="PRIVATE_KEY=\"$privateKey\""
 echo $configLine >> $PATH_DOTENV
-rm $PATH_PRIVATE_KEY
+# rm $PATH_PRIVATE_KEY
 
 echo
 echo Credential has been successfully changed!

@@ -76,6 +76,12 @@ $query_builder = TRUE;
 $dotenv = Dotenv\Dotenv::createImmutable(APPPATH);
 $dotenv->load();
 
+// --------------------------------------------------------------------------------------
+// Uncomment the line follows to generate the private key using database credentials.
+// Private key is stored in the file "./private_key.txt".
+// makePrivateKey("host", "username", "password", "db_name", a, b, c, d);
+// --------------------------------------------------------------------------------------
+
 $db['default'] = array(
     'dsn'   => '',
     'hostname' => getDatabaseCredential()[0],
