@@ -14,7 +14,7 @@ The project's requirement written by our teacher Ghodrat Moghadampour:
 Firstly, you will need to have a MySQL database for this application. Create tables using this [database schema](https://github.com/pqhuy98/gps_tracker/blob/master/database-schema.sql).
 
 ### Quick installation for VAMK's server
-This section is for deloying on VAMK's cc.puv.fi server. Copy and run these command lines on VAMK's shell and a fresh version of the server will be installed. You will need to enter your MySQL host, username, password, and database name.
+This section is for deloying on VAMK's cc.puv.fi server. Run the following command lines on VAMK's shell and a fresh version of the server will be installed. You will need to enter your MySQL host, username, password, and database name.
 ```
 cd ~/public_html
 rm -rf gps_tracker
@@ -29,8 +29,8 @@ ERROR_REPORTING=false # if true, PHP's error message will thrown, else otherwise
 " > ./application/.env
 
 
-chmod u+x ./database-config.vamk.sh
-source ./database-config.vamk.sh && echo "Installation completed."
+source ./database-config.vamk.sh
+
 ```
 
 ### Build from source
@@ -54,7 +54,7 @@ PRIVATE_KEY="..."
 ### On Linux server, or VAMK's cc.puv.fi
 If your server runs Linux or VAMK's server, generating new PRIVATE_KEY can be done simply running [this script](https://github.com/pqhuy98/gps_tracker/blob/master/database-config.vamk.sh), then enter your credentials:
 ```
-./database--config.vamk.fi
+source ./database--config.vamk.sh
 ```
 Otherwise, you have to generate it manually.
 
