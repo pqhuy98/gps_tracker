@@ -1,14 +1,14 @@
 #!/bin/bash
-echo "Changing data base configuration"
+echo "Changing database configuration"
 PATH_DOTENV=./application/.env
 PATH_PRIVATE_KEY=private_key.txt
 PATH_PHP_CONFIG=./application/config/database.php
 
-read -p 'Host [mysql.cc.puv.fi]: ' host
+read -p 'MySQL host [mysql.cc.puv.fi]: ' host
 host=${host:-mysql.cc.puv.fi}
-read -p 'Username [e1601124]: ' username
-username=${username:-e1601124}
-read -sp 'Password: ' password
+read -p "MySQL username [$USER]: " username
+username=${username:-$USER}
+read -sp 'MySQL password: ' password
 echo
 read -p "Database name [$username""_gps_tracker]: " dbName
 dbName=${dbName:-"$username""_gps_tracker"}
@@ -30,8 +30,8 @@ makePrivateKey(\"$host\", \"$username\", \"$password\", \"$dbName\", $a, $b, $c,
 echo $cmd >> $PATH_PHP_CONFIG # add this line to be run when API is called
 
 # Make request to server to update
-curl -s http://localhost/~e1601124/gps_tracker/api/user > /dev/null
-curl -s https://www.cc.puv.fi/~e1601124/gps_tracker/api/user > /dev/null
+curl -s http://localhost/~$USER/gps_tracker/api/user > /dev/null
+curl -s https://www.cc.puv.fi/~$USER/gps_tracker/api/user > /dev/null
 
 # delete the last 2 lines created earlier
 sed -i '$d' $PATH_PHP_CONFIG
